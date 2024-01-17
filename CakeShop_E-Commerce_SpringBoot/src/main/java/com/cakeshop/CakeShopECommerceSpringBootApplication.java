@@ -9,5 +9,4 @@ public class CakeShopECommerceSpringBootApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CakeShopECommerceSpringBootApplication.class, args);
 	}
-
 }
