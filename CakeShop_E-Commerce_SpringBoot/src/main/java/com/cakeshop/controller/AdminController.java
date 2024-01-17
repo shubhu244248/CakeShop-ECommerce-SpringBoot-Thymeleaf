@@ -1,5 +1,7 @@
 package com.cakeshop.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -49,6 +51,17 @@ public class AdminController {
 		return "redirect:/admin/categories";
 	}
 	
+	
+	@GetMapping("/admin/categories/update/{id}")
+	public String updateCat(@PathVariable int id, Model model) {
+		Optional<Category> optional = categoryService.getCategoryById(id);
+		if(optional.isPresent()) {
+			model.addAttribute("category",optional.get());
+			return "categoriesAdd";
+		} else {
+			return "404";
+		}
+	}
 	
 	
 	
