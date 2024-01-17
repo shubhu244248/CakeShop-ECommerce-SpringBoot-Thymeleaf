@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.cakeshop.model.Category;
@@ -42,4 +43,13 @@ public class AdminController {
 		return "redirect:/admin/categories";
 	}
 
+	@GetMapping("/admin/categories/delete/{id}")
+	public String deleteCat(@PathVariable int id) {
+		categoryService.removeCategoryById(id);
+		return "redirect:/admin/categories";
+	}
+	
+	
+	
+	
 }
