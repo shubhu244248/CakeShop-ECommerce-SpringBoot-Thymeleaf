@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.cakeshop.dto.ProductDTO;
 import com.cakeshop.model.Category;
 import com.cakeshop.service.CategoryService;
 import com.cakeshop.service.ProductService;
@@ -69,9 +70,16 @@ public class AdminController {
 //	Product Section
 
 	@GetMapping("/admin/products")
-	public String getProducts(Model model) {
+	public String products(Model model) {
 		model.addAttribute("products", productService.getAllProducts());
 		return "products";
+	}
+	
+	@GetMapping("/admin/products/add")
+	public String productAddGet(Model model) {
+		model.addAttribute("productDTO", new ProductDTO());
+		model.addAttribute("categories", categoryService.getAllCategories());
+		return "productsAdd";
 	}
 	
 	
