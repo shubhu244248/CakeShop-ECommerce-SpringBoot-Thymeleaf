@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.cakeshop.model.Category;
 import com.cakeshop.service.CategoryService;
+import com.cakeshop.service.ProductService;
 
 @Controller
 public class AdminController {
@@ -19,7 +20,8 @@ public class AdminController {
 	
 	@Autowired
 	CategoryService categoryService;
-	
+	@Autowired
+	ProductService productService;
 
 	@GetMapping("/admin")
 	public String adminHome() {
@@ -62,6 +64,16 @@ public class AdminController {
 			return "404";
 		}
 	}
+	
+	
+//	Product Section
+
+	@GetMapping("/admin/products")
+	public String getProducts(Model model) {
+		model.addAttribute("products", productService.getAllProducts());
+		return "products";
+	}
+	
 	
 	
 	
